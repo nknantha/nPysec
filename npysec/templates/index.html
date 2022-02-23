@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container text-center home-container">
+    {% if current_user.is_authenticated %}
+        <h2 class="mt-4 p-1">Welcome {{ current_user.name }}!</h2>
+        <h4 class="mb-4 p-1">Now find your secret,</h4>
+        <a class="btn btn-outline-primary btn-lg me-1"
+           href="{{ url_for('main.secrets') }}" role="button">Secrets</a>
+        <a class="btn btn-outline-secondary btn-lg ms-1"
+           href="{{ url_for('main.signout') }}" role="button">Sign Out</a>
+    {% else %}
+        <h2 class="mt-4 p-1">Welcome to {{ config['FLASK_TITLE'] }}!</h2>
+        <h4 class="mb-4 p-1">Find a way to get in,</h4>
+        <a class="btn btn-outline-primary btn-lg me-1"
+           href="{{ url_for('main.signin') }}" role="button">Sign In</a>
+        <a class="btn btn-outline-secondary btn-lg ms-1"
+           href="{{ url_for('main.signup') }}" role="button">Sign Up</a>
+    {% endif %}
+</div>
+
+{% endblock %}

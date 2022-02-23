@@ -1,0 +1,261 @@
+// Mixin Section.
+
+// Used for generating box-shadow around buttons automatically.
+@mixin box-shadow-generator($color, $alpha: 0.25) {
+    box-shadow: 0 0 0 0.25rem change-color($color, $alpha: $alpha);
+}
+
+
+// Variables Section.
+
+$primary-btn-color: #39ff76;
+$secondary-btn-color: #5d9fff;
+
+$page-bg-color: #072227;
+$page-text-color: #7ec4c6;
+
+$btn-text-color: #000;
+$link-hover-color: #90f2f4;
+
+$error-text-color: #ff6464;
+$error-text-background: change-color($error-text-color, $alpha: 0.12);
+
+$info-text-color: $page-text-color;
+$info-text-background: change-color($info-text-color, $alpha: 0.12);
+
+$nav-item-color: #409ca1;
+$nav-item-highlight-color: #53c7d1;
+
+
+// Disabled autofill theme overriding behaviours.
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-text-fill-color: $page-text-color;
+    caret-color: $page-text-color;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+body {
+    background-color: $page-bg-color;
+    color: $page-text-color;
+    font-family: 'Ubuntu', sans-serif;
+    margin-bottom: 5rem;
+}
+
+a {
+    color: $page-text-color;
+    text-decoration: none;
+}
+
+a:hover {
+    color: $link-hover-color;
+}
+
+:focus {
+    border-radius: 0.25rem;
+}
+
+
+// Navbar Styles.
+
+.nav-link {
+    font-size: 1.1rem;
+    color: $nav-item-color !important;
+}
+
+.nav-link:hover {
+    color: $nav-item-highlight-color !important;
+}
+
+.navbar-toggler {
+    color: $nav-item-color;
+    border-color: $nav-item-color;
+}
+
+.navbar-toggler-icon {
+    background-size: 101%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='%23#{str-slice('#{$nav-item-color}', 2)}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='4' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler:hover {
+    color: $nav-item-highlight-color;
+    border-color: $nav-item-highlight-color;
+
+    .navbar-toggler-icon {
+        @extend .navbar-toggler-icon;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='%23#{str-slice('#{$nav-item-highlight-color}', 2)}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='4' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+}
+
+
+// Container Styles.
+
+.home-container {
+    margin-top: 27vh;
+}
+
+.feedback-container {
+    position: relative;
+    top: 20px;
+    max-width: 28rem;
+    max-height: 1rem;
+}
+
+.signin-container {
+    margin-top: 16vh;
+    max-width: 400px;
+    text-align: center;
+}
+
+.signup-container {
+    @extend .signin-container;
+    margin-top: 14vh;
+}
+
+
+// Pane Styles.
+
+.top-pane {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 0.2rem;
+    background-color: #0b3339;
+    border-radius: 0% 0% 5% 5% / 0% 0% 100% 100%;
+}
+
+.bottom-pane {
+    @extend .top-pane;
+    border-radius: 5% 5% 0% 0% / 100% 100% 0% 0%;
+    padding: 0.3rem 0.9rem;
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 450px;
+    color: $nav-item-color;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 576px) {
+    .bottom-pane {
+        width: 100%;
+    }
+}
+
+.error-pane {
+    background-color: $error-text-background;
+    border: 1px solid $error-text-color;
+    border-radius: 0.25rem;
+    word-wrap: break-word;
+    padding-right: 1rem;
+    margin-top: .5rem;
+}
+
+.info-pane {
+    @extend .error-pane;
+    background-color: $info-text-background;
+    border: 1px solid $info-text-color;
+}
+
+.error-list {
+    margin: 0.4rem auto;
+    text-align: left;
+    color: $error-text-color;
+    font-size: 0.83rem;
+    list-style-type: "❚   ";
+}
+
+.info-pane>.error-list {
+    color: $page-text-color;
+}
+
+
+// Form Styles.
+
+.form-control {
+    border-color: $page-text-color;
+    background-color: transparent;
+    color: $page-text-color;
+}
+
+.form-control:focus {
+    @extend .form-control;
+    @include box-shadow-generator($page-text-color);
+}
+
+.form-control.is-invalid {
+    border-color: $error-text-color;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-color: transparent;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23#{str-slice('#{$error-text-color}', 2)}'%3E%3Ccircle cx='6' cy='6' r='4.5'/%3E%3Cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3E%3Ccircle cx='6' cy='8.2' r='.6' fill='%23#{str-slice('#{$error-text-color}', 2)}' stroke='none'/%3E%3C/svg%3E");
+}
+
+.form-control.is-invalid:focus {
+    @extend .is-invalid;
+    @include box-shadow-generator($error-text-color);
+}
+
+.form-entry {
+    text-align: left;
+
+    .error-pane {
+        @extend .error-pane;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        margin-top: 0;
+    }
+}
+
+
+// Button Styles.
+
+.btn-outline-primary {
+    color: $primary-btn-color;
+    border-color: $primary-btn-color;
+}
+
+.btn-outline-primary:hover {
+    color: $btn-text-color;
+    border-color: $primary-btn-color;
+    background-color: $primary-btn-color;
+}
+
+.btn-outline-primary:focus {
+    @include box-shadow-generator($primary-btn-color);
+}
+
+.btn-outline-secondary {
+    color: $secondary-btn-color;
+    border-color: $secondary-btn-color;
+}
+
+.btn-outline-secondary:hover {
+    color: $btn-text-color;
+    border-color: $secondary-btn-color;
+    background-color: $secondary-btn-color;
+}
+
+.btn-outline-secondary:focus {
+    @include box-shadow-generator($secondary-btn-color);
+}
+
+
+// Github Icon.
+
+#github-icon {
+    fill: $page-text-color;
+    width: 25px;
+    vertical-align: -0.4rem;
+}
+
+#github-icon:hover {
+    fill: $link-hover-color;
+}
