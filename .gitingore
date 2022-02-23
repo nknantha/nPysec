@@ -1,11 +1,8 @@
+# Editor Config.
+.idea/
+
 # Byte-compiled files.
 __pycache__/
-
-
-# Packaging / Distribution.
-build/
-dist/
-*.egg-info/
 
 # Compiled CSS.
 npysec/static/css
