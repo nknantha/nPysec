@@ -2,12 +2,11 @@ import os
 from datetime import timedelta
 
 # For debugging purpose.
-DEBUG = True
+DEBUG = False
 
 # General Configurations.
 FLASK_TITLE = "nPysec"
 SECRET_KEY = os.environ["FLASK_SECRET"]
-# SECRET_KEY = "alphabeta"
 PROJECT_URL = "https://github.com/nknantha/nPysec"
 
 # Flask-Seasurf Configurations.
@@ -25,8 +24,16 @@ login_manager_login_message_category = "error"
 login_manager_session_protection = "strong"
 
 # Flask-SQLAlchemy Configurations.
-SQLALCHEMY_DATABASE_URI = os.environ["DATABASE_URL"]
-# SQLALCHEMY_DATABASE_URI = "postgresql://postgres:root@localhost/npysecdb"
+def get_db_uri(uri: str) -> str:
+    """
+    To maintain SQLAlchemy compatibility with Heroku, this function 
+    changes the Database URI from `postgres://` to `postgresql://`.
+    """
+    if uri.startswith("postgres://"):
+        return uri.replace("postgres://", "postgresql://", 1)
+    return uri
+
+SQLALCHEMY_DATABASE_URI = get_db_uri(os.environ["DATABASE_URL"])
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 # Flask-Talisman Configurations.
