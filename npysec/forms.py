@@ -3,7 +3,6 @@ import re
 from flask import current_app
 from flask_wtf import FlaskForm
 from wtforms import fields, validators
-from wtforms.fields import html5
 
 
 def wtf_is_hidden_field(field: fields.Field) -> bool:
@@ -61,7 +60,7 @@ class SeaSurfForm(FlaskForm):
 class SignupForm(SeaSurfForm):
     name = fields.StringField(label="Name",
                               validators=[validators.DataRequired()])
-    email = fields.html5.EmailField(label="Email",
+    email = fields.EmailField(label="Email",
                                     validators=[validators.DataRequired(),
                                                 validators.Email()])
     password = fields.PasswordField(label="Password",
