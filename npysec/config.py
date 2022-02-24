@@ -25,7 +25,7 @@ login_manager_login_message_category = "error"
 login_manager_session_protection = "strong"
 
 # Flask-SQLAlchemy Configurations.
-SQLALCHEMY_DATABASE_URI = os.environ["FLASK_DATABASE_URI"]
+SQLALCHEMY_DATABASE_URI = os.environ["DATABASE_URL"]
 # SQLALCHEMY_DATABASE_URI = "postgresql://postgres:root@localhost/npysecdb"
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
