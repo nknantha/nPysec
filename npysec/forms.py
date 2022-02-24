@@ -3,11 +3,11 @@ import re
 from flask import current_app
 from flask_wtf import FlaskForm
 from wtforms import fields, validators
-from wtforms.fields import html5, HiddenField, Field
+from wtforms.fields import html5
 
 
-def wtf_is_hidden_field(field: Field) -> bool:
-    return isinstance(field, HiddenField)
+def wtf_is_hidden_field(field: fields.Field) -> bool:
+    return isinstance(field, fields.HiddenField)
 
 
 class PasswordValidator:
@@ -43,8 +43,10 @@ class SeaSurfForm(FlaskForm):
         super().__init__(*args, **kwargs)
 
         ss_csrf_name = current_app.config.get('CSRF_COOKIE_NAME')
-        ss_csrf_token = current_app.jinja_env.globals[
-            'csrf_token']()  # For enabling seasurf CSRF while using in forms.
+
+        # For enabling seasurf CSRF while using in forms.
+        ss_csrf_token = current_app.jinja_env.globals['csrf_token']()
+
         ss_csrf_field = fields.HiddenField(
             default=ss_csrf_token,
             render_kw=dict(
@@ -59,9 +61,9 @@ class SeaSurfForm(FlaskForm):
 class SignupForm(SeaSurfForm):
     name = fields.StringField(label="Name",
                               validators=[validators.DataRequired()])
-    email = html5.EmailField(label="Email",
-                             validators=[validators.DataRequired(),
-                                         validators.Email()])
+    email = fields.html5.EmailField(label="Email",
+                                    validators=[validators.DataRequired(),
+                                                validators.Email()])
     password = fields.PasswordField(label="Password",
                                     validators=[validators.DataRequired(),
                                                 PasswordValidator(min=8)])
