@@ -9,7 +9,7 @@ curl --parallel --silent --show-error --location $SASS_URL --output dart-sass.ta
 tar --extract --gzip --file dart-sass.tar.gz
 chmod u+x dart-sass/sass
 echo Compiling sass files...
-dart-sass/sass --style compressed --no-source-map scss/styles.scss css/styles.css
+dart-sass/sass --style compressed --no-source-map npysec/static/scss/styles.scss npysec/static/css/styles.css
 echo Compiled successfully...
 echo
 
