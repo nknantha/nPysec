@@ -59,10 +59,11 @@ class SeaSurfForm(FlaskForm):
 
 class SignupForm(SeaSurfForm):
     name = fields.StringField(label="Name",
-                              validators=[validators.DataRequired()])
+                              validators=[validators.DataRequired(),
+                                          validators.Length(min=4)])
     email = fields.EmailField(label="Email",
-                                    validators=[validators.DataRequired(),
-                                                validators.Email()])
+                              validators=[validators.DataRequired(),
+                                          validators.Email()])
     password = fields.PasswordField(label="Password",
                                     validators=[validators.DataRequired(),
                                                 PasswordValidator(min=8)])
