@@ -60,7 +60,8 @@ class SeaSurfForm(FlaskForm):
 class SignupForm(SeaSurfForm):
     name = fields.StringField(label="Name",
                               validators=[validators.DataRequired(),
-                                          validators.Length(min=4)])
+                                          validators.Length(min=4,
+                                                            message="Name must be at least 4 characters long.")])
     email = fields.EmailField(label="Email",
                               validators=[validators.DataRequired(),
                                           validators.Email()])
