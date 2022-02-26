@@ -9,4 +9,4 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(), unique=True, nullable=False)
     password = db.Column(db.String(), nullable=False)
     name = db.Column(db.String(), nullable=False)
-    ctime = db.Column(db.DateTime(), nullable=False)
+    ctime = db.Column(db.Date(), nullable=False)

@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date
 
 import flask
 import sqlalchemy.exc
@@ -56,7 +56,7 @@ def signup():
                     signup_form.password.data,
                     method='pbkdf2:sha256',
                     salt_length=16),
-                ctime=datetime.now()
+                ctime=date.today()
             )
             db.session.add(new_user)
             db.session.commit()
