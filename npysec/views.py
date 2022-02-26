@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import flask
 import sqlalchemy.exc
 from flask import (Blueprint, render_template, send_from_directory, redirect,
@@ -53,7 +55,8 @@ def signup():
                 password=generate_password_hash(
                     signup_form.password.data,
                     method='pbkdf2:sha256',
-                    salt_length=16)
+                    salt_length=16),
+                ctime=datetime.now()
             )
             db.session.add(new_user)
             db.session.commit()
