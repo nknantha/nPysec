@@ -75,6 +75,9 @@ def signup():
             db.session.add(new_user)
             db.session.commit()
             flask.flash("New account created successfully.", category="info")
+            flask.flash(
+                "Every new account will be expired after "
+                f"{config.expiry_duration.days} days.", category="info")
 
         return redirect(url_for("main.signin"))
     return render_template("signup.html", form=signup_form)

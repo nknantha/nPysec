@@ -8,7 +8,7 @@ DEBUG = False
 FLASK_TITLE = "nPysec"
 SECRET_KEY = os.environ["FLASK_SECRET"]
 PROJECT_URL = "https://github.com/nknantha/nPysec"
-expiry_duration = timedelta(minutes=5)
+expiry_duration = timedelta(days=30)
 
 # Flask-Seasurf Configurations.
 CSRF_COOKIE_NAME = "ss_csrf_token"
