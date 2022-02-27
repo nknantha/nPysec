@@ -36,9 +36,8 @@ def redirect_dest(url: str) -> Response:
 
 def is_user_expired(usr_ob: User) -> bool:
     if usr_ob.ctime < datetime.utcnow() - config.expiry_duration:
-        # For reducing the db transaction, we don't commit here.
-        # It must be done by calling function.
         db.session.delete(usr_ob)
+        db.session.commit()
         flask.flash("Your old account expired.", category="error")
         return True
     return False
@@ -74,9 +73,9 @@ def signup():
                 ctime=datetime.utcnow()
             )
             db.session.add(new_user)
+            db.session.commit()
             flask.flash("New account created successfully.", category="info")
 
-        db.session.commit()
         return redirect(url_for("main.signin"))
     return render_template("signup.html", form=signup_form)
 
@@ -95,8 +94,6 @@ def signin():
             if is_user_expired(req_user):
                 flask.flash("Don't worry make a new account.",
                             category="error")
-                # Used to commit the changes done by is_user_expired().
-                db.session.commit()
                 return redirect(url_for("main.signup"))
 
             elif check_password_hash(req_user.password,
