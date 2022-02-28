@@ -1,1 +1,1 @@
-web: uwsgi uwsgi.ini
+web: chmod u+x ./run.sh && ./run.sh

@@ -8,6 +8,7 @@ DEBUG = False
 FLASK_TITLE = "nPysec"
 SECRET_KEY = os.environ["FLASK_SECRET"]
 PROJECT_URL = "https://github.com/nknantha/nPysec"
+expiry_duration = timedelta(days=30)
 
 # Flask-Seasurf Configurations.
 CSRF_COOKIE_NAME = "ss_csrf_token"
@@ -23,6 +24,7 @@ login_manager_login_view = "main.signin"
 login_manager_login_message_category = "error"
 login_manager_session_protection = "strong"
 
+
 # Flask-SQLAlchemy Configurations.
 def get_db_uri(uri: str) -> str:
     """
@@ -32,6 +34,7 @@ def get_db_uri(uri: str) -> str:
     if uri.startswith("postgres://"):
         return uri.replace("postgres://", "postgresql://", 1)
     return uri
+
 
 SQLALCHEMY_DATABASE_URI = get_db_uri(os.environ["DATABASE_URL"])
 SQLALCHEMY_TRACK_MODIFICATIONS = False
