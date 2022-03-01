@@ -1,1 +1,1 @@
-web: chmod u+x ./run.sh && ./run.sh
+web: chmod u+x ./run.sh && bin/start-nginx ./run.sh
