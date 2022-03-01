@@ -130,6 +130,12 @@ a:hover {
     border-radius: 0% 0% 5% 5% / 0% 0% 100% 100%;
 }
 
+@media (min-width: 992px) {
+    .top-pane {
+        max-width: 960px!important;
+    }
+}
+
 .bottom-pane {
     @extend .top-pane;
     border-radius: 5% 5% 0% 0% / 100% 100% 0% 0%;
@@ -138,7 +144,7 @@ a:hover {
     right: 0;
     left: 0;
     bottom: 0;
-    width: 450px;
+    width: 400px;
     color: $nav-item-color;
     font-size: 1.1rem;
 }
