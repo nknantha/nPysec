@@ -1,0 +1,50 @@
+{
+    "name": "nPysec",
+    "description": "A flask app to serve a file with authentication.",
+    "repository": "https://github.com/nknantha/nPysec",
+    "success_url": "/",
+    "addons": {
+        "heroku-postgresql": {
+            "plan": "hobby-dev",
+            "as": "database"
+        }
+    },
+    "buildpacks": [
+        {
+            "url": "heroku-community/nginx"
+        },
+        {
+            "url": "heroku/python"
+        }
+    ],
+    "env": {
+        "FLASK_SECRET": {
+            "description": "A secret key for verifying the integrity of signed cookies.",
+            "generator": "secret"
+        },
+        "SASS_URL": {
+            "description": "Sass Executable to compile .scss",
+            "value": "https://github.com/sass/dart-sass/releases/download/1.49.9/dart-sass-1.49.9-linux-x64.tar.gz"
+        }
+    },
+    "environments": {
+        "review": {
+            "addons": {
+                "heroku-postgresql": {
+                    "plan": "hobby-dev",
+                    "as": "database"
+                }
+            },
+            "env": {
+                "FLASK_SECRET": {
+                    "description": "A secret key for verifying the integrity of signed cookies.",
+                    "generator": "secret"
+                },
+                "SASS_URL": {
+                    "description": "Sass Executable to compile .scss",
+                    "value": "https://github.com/sass/dart-sass/releases/download/1.49.9/dart-sass-1.49.9-linux-x64.tar.gz"
+                }
+            }
+        }
+    }
+}
