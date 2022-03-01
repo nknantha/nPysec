@@ -1,6 +1,4 @@
-#!/bin/bash
-
-set -e
+#!/bin/bash -e
 
 # Compiling CSS.
 echo Getting dart-sass...
