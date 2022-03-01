@@ -29,12 +29,7 @@
     },
     "environments": {
         "review": {
-            "addons": {
-                "heroku-postgresql": {
-                    "plan": "hobby-dev",
-                    "as": "database"
-                }
-            },
+            "addons": ["heroku-postgresql:hobby-dev"],
             "env": {
                 "FLASK_SECRET": {
                     "description": "A secret key for verifying the integrity of signed cookies.",
