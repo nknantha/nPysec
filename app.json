@@ -3,16 +3,13 @@
     "description": "A flask app to serve a file with authentication.",
     "repository": "https://github.com/nknantha/nPysec",
     "success_url": "/",
-    "addons": {
-        "heroku-postgresql": {
-            "plan": "hobby-dev",
+    "addons": [
+        {
+            "plan": "heroku-postgresql:hobby-dev",
             "as": "database"
         }
-    },
+    ],
     "buildpacks": [
-        {
-            "url": "heroku-community/nginx"
-        },
         {
             "url": "heroku/python"
         }
@@ -29,12 +26,12 @@
     },
     "environments": {
         "review": {
-            "addons": {
-                "heroku-postgresql": {
-                    "plan": "hobby-dev",
+            "addons": [
+                {
+                    "plan": "heroku-postgresql:hobby-dev",
                     "as": "database"
                 }
-            },
+            ],
             "env": {
                 "FLASK_SECRET": {
                     "description": "A secret key for verifying the integrity of signed cookies.",
