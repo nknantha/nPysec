@@ -47,6 +47,3 @@ def create_app(app=None):
     app.register_blueprint(main)
 
     return app
-
-# Creating db tables on initialization of package.
-db.create_all(app=create_app())
