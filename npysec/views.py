@@ -1,3 +1,4 @@
+import os
 from datetime import datetime
 
 import flask
@@ -122,8 +123,9 @@ def secrets():
 def download():
     # Flushing unused flash messages, so that it won't disturb other pages.
     get_flashed_messages()
-    return send_from_directory(current_app.static_folder,
-                               path="files/SecretFile.png")
+    return send_from_directory(
+        os.path.join(current_app.root_path, "protected"),
+        path="SecretFile.png")
 
 
 @main.route("/signout")

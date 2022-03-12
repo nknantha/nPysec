@@ -17,12 +17,13 @@
 {%- endmacro %}
 
 {% macro render_entry_field(form) %}
+    {% set autofocus=True %}
     {%- for field in form %}
         {%- if field.type in ['StringField', 'PasswordField', 'EmailField'] %}
             <div class="mb-3 form-entry">
                 {{ field.label(class='form-label') }}
                 {%- if field.errors %}
-                    {{ field(class='form-control is-invalid') }}
+                    {{ field(class='form-control is-invalid', autofocus=autofocus) }}
                     <div class="error-pane">
                             <ul class="error-list">
                                 {%- for error in field.errors %}
@@ -31,8 +32,9 @@
                             </ul>
                     </div>
                 {% else %}
-                    {{ field(class='form-control') }}
+                    {{ field(class='form-control', autofocus=autofocus) }}
                 {% endif %}
+                {% set autofocus=False %}
             </div>
         {%- endif %}
     {%- endfor %}

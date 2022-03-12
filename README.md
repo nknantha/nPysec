@@ -4,11 +4,20 @@
     <p align="center">A flask app to serve a file with authentication.</p>
 </p>
 
+## Tools
+- HTML
+- CSS: Bootstrap
+- Python: Flask, uwsgi
+- PostgreSQL
+- Heroku
+
 ## Features
 - User authentication.
 - CSRF protection.
+- Session protection.
+- Content security policy.
+- Passwords are salted and hashed.
 - User session management.
-- Session protection. (for some pages)
-- HTTP security headers.
 - PostgreSQL integration.
 - Enhanced flash/feedback messages.
+- Account expiry feature.

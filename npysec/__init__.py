@@ -25,8 +25,6 @@ def create_app(app=None):
 
     # Data Base Initialization.
     db.init_app(app=app)
-    with app.app_context():
-        db.create_all()  # To create models.
 
     # SeaSurf Initialization.
     seasurf.init_app(app=app)
