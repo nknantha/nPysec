@@ -124,7 +124,7 @@ def download():
     # Flushing unused flash messages, so that it won't disturb other pages.
     get_flashed_messages()
     return send_from_directory(
-        os.path.join(current_app.instance_path, 'protected'),
+        os.path.join(current_app.root_path, "protected"),
         path="SecretFile.png")
 
 
