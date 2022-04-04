@@ -188,19 +188,18 @@ a:hover {
 }
 
 .error-list {
-    margin: 0.4rem auto;
+    margin: 0.5rem auto;
     text-align: left;
     color: $error-text-color;
     font-size: 0.83rem;
     list-style-type: "❚   ";
-    margin-bottom: 0.05rem;
 }
 
 .btn-close {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23#{str-slice('#{$error-text-color}', 2)}'%3E%3Cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3E%3C/svg%3E");
     height: 0;
     width: 0;
-    padding: 1rem;
+    padding: 1rem !important;
     background-size: 13px;
 }
 
