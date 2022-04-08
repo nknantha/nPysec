@@ -1,8 +1,13 @@
 // Mixin Section.
 
 // Used for generating box-shadow around buttons automatically.
-@mixin box-shadow-generator($color, $alpha: 0.25) {
-    box-shadow: 0 0 0 0.25rem change-color($color, $alpha: $alpha);
+@mixin box-shadow-generator($color, $alpha: 0.25, $inset: false) {
+
+    @if $inset {
+        box-shadow: inset 0 0 0 0.25rem change-color($color, $alpha: $alpha);
+    } @else {
+        box-shadow: 0 0 0 0.25rem change-color($color, $alpha: $alpha);
+    }
 }
 
 
@@ -204,7 +209,7 @@ a:hover {
 }
 
 .btn-close:focus {
-    @include box-shadow-generator($error-text-color);
+    @include box-shadow-generator($error-text-color, $inset: true);
 }
 
 .info-pane>.error-list {
@@ -216,7 +221,7 @@ a:hover {
 }
 
 .info-pane>.btn-close:focus {
-    @include box-shadow-generator($info-text-color);
+    @include box-shadow-generator($info-text-color, $inset: true);
 }
 
 // Form Styles.
