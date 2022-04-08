@@ -137,6 +137,7 @@
                 {%- with infos = get_flashed_messages(category_filter=["info"]) %}
                     {%- if infos %}
                         <div class="info-pane alert alert-dismissible fade show">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             <ul class="error-list">
                                 {%- for info in infos %}
                                     <li class="error-item">{{ info }}</li>
