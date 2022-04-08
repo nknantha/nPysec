@@ -216,7 +216,7 @@ a:hover {
 }
 
 .info-pane>.btn-close:focus {
-    @include box-shadow-generator($error-text-color);
+    @include box-shadow-generator($info-text-color);
 }
 
 // Form Styles.
