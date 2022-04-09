@@ -206,10 +206,15 @@ a:hover {
     width: 0;
     padding: 1rem !important;
     background-size: 13px;
+    opacity: 0.75;
 }
 
 .btn-close:focus {
     @include box-shadow-generator($error-text-color, $inset: true);
+}
+
+.btn-close:hover {
+    opacity: 1;
 }
 
 .info-pane>.error-list {
